@@ -41,7 +41,9 @@ def run(s: Stepper, c: Components, args: dict[str, str]):
     print(f"Removing folder '{proj_root}/prod2' and making temp submodule")
     subprocess.call(["git", "rm", "-rf", f"{proj_root}/prod2"])
     subprocess.call(["rm", "-rf", f"{proj_root}/prod2"])
-    subprocess.call(["git", "submodule", "add", "-b", found_comp.env_branches["staging"], "--name", secrets.token_hex(8), found_comp.repo, f"{proj_root}/prod2"])
+
+    tempid = secrets.token_hex(8)
+    subprocess.call(["git", "submodule", "add", "-b", found_comp.env_branches["staging"], "--name", tempid, found_comp.repo, f"{proj_root}/prod2"])
 
 
     if found_comp.env_file:
@@ -65,6 +67,18 @@ def run(s: Stepper, c: Components, args: dict[str, str]):
     subprocess.call(["git", "rm", "-rf", f"{proj_root}/prod2"])
     subprocess.call(["rm", "-rf", f"{proj_root}/prod"])
     subprocess.call(["rm", "-rf", f"{proj_root}/prod2"])
+
+    # Hacky solution, remove temp submodule from .gitmodules manually
+    with open(f"{proj_root}/.gitmodules", "r") as f:
+        lines = f.readlines()
+
+    with open(f"{proj_root}/.gitmodules", "w") as f:
+        for line in lines:
+            if tempid not in line:
+                f.write(line)
+            else:
+                break
+            
 
     print(f"Running populate")
     populate_run(s, c, {})
