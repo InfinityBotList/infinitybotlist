@@ -163,3 +163,22 @@ borealis:
       - pip install -r requirements.txt
     staging:
       - pip install -r requirements.txt
+
+ts-webhook-adapter:
+  repo: https://github.com/InfinityBotList/ts-webhook-adapter
+  description: Tailscale Endpoint Security
+  dir: ts-webhook-adapter
+  bin: ts-webhook-adapter
+  envs:
+    - staging
+  env_branches:
+    staging: main
+    prod: current-prod
+  systemd_service:
+    prod: ""
+    staging: ts-webhook-adapter
+  build:
+    prod:
+      - make all
+    staging:
+      - make all

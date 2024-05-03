@@ -38,3 +38,7 @@
 	path = src/borealis/staging
 	url = https://github.com/infinitybotlist/borealis
 	branch = main
+[submodule "src/ts-webhook-adapter/staging"]
+	path = src/ts-webhook-adapter/staging
+	url = https://github.com/InfinityBotList/ts-webhook-adapter
+	branch = main

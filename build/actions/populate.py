@@ -1,11 +1,10 @@
 """Populates submodules under the src folder as stated in components"""
 
 from libstep import Stepper
-from data.components import Components
+from data.components import Component, Components
 import os
-import shutil
 import subprocess
-import copy
+import json
 
 def run(s: Stepper, c: Components, args: dict[str, str]):
     # First loop over the src folder
@@ -34,6 +33,7 @@ def run(s: Stepper, c: Components, args: dict[str, str]):
 
     # Next, handle go.work/Cargo.work files to ensure easy development
     go_work_adds = []
+    cargo_work_adds = []
     for f in os.listdir("src"):
         found_comp = c.find(f)
 
@@ -49,7 +49,7 @@ def run(s: Stepper, c: Components, args: dict[str, str]):
                 go_work_adds.append(f"src/{found_comp.dir}/{env}")
             
             if os.path.exists(f"src/{found_comp.dir}/{env}/Cargo.toml"):
-                go_work_adds.append(f"src/{found_comp.dir}/{env}")
+                cargo_work_adds.append([found_comp, env])
     
     if len(go_work_adds) > 0:
         print("Generating go.work files")
@@ -59,4 +59,11 @@ def run(s: Stepper, c: Components, args: dict[str, str]):
         for f in go_work_adds:
             print(f"Adding {f} to go.work")
             subprocess.call(["go", "work", "use", f])
+    
+    if len(cargo_work_adds) > 0:
+        print("Generating Cargo.work files")
+        subprocess.call(["rm", "-f", "Cargo.work"])
+        base_file = "[workspace]\nmembers=" + json.dumps([f"{env}/{c.bin}" for c, env in cargo_work_adds])
 
+        with open("Cargo.work", "w") as f:
+            f.write(base_file)
