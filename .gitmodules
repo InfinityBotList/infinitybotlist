@@ -42,3 +42,7 @@
 	path = src/ts-webhook-adapter/staging
 	url = https://github.com/InfinityBotList/ts-webhook-adapter
 	branch = main
+[submodule "d6ec7301a8a6ff7e"]
+	path = src/Popplio/prod2
+	url = https://github.com/infinitybotlist/Popplio
+	branch = main
