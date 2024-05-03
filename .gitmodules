@@ -1,0 +1,40 @@
+[submodule "src/Popplio/staging"]
+	path = src/Popplio/staging
+	url = https://github.com/infinitybotlist/Popplio
+	branch = main
+[submodule "src/Popplio/prod"]
+	path = src/Popplio/prod
+	url = https://github.com/infinitybotlist/Popplio
+	branch = current-prod
+[submodule "src/arcadia/staging"]
+	path = src/arcadia/staging
+	url = https://github.com/infinitybotlist/arcadia
+	branch = main
+[submodule "src/arcadia/prod"]
+	path = src/arcadia/prod
+	url = https://github.com/infinitybotlist/arcadia
+	branch = current-prod
+[submodule "src/persepolis/staging"]
+	path = src/persepolis/staging
+	url = https://github.com/infinitybotlist/persepolis
+	branch = main
+[submodule "src/ibl-tickets/staging"]
+	path = src/ibl-tickets/staging
+	url = https://github.com/infinitybotlist/ibl-tickets
+	branch = main
+[submodule "src/Nightheart/staging"]
+	path = src/Nightheart/staging
+	url = https://github.com/infinitybotlist/Nightheart
+	branch = main
+[submodule "src/htmlsanitize/staging"]
+	path = src/htmlsanitize/staging
+	url = https://github.com/infinitybotlist/htmlsanitize
+	branch = main
+[submodule "src/infernoplex/staging"]
+	path = src/infernoplex/staging
+	url = https://github.com/infinitybotlist/infernoplex
+	branch = main
+[submodule "src/borealis/staging"]
+	path = src/borealis/staging
+	url = https://github.com/infinitybotlist/borealis
+	branch = main

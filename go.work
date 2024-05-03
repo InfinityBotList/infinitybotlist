@@ -1,0 +1,6 @@
+go 1.22.2
+
+use (
+	./src/Popplio/staging
+	./src/ibl-tickets/staging
+)

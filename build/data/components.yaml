@@ -6,6 +6,9 @@ popplio:
   envs:
     - staging
     - prod
+  env_branches:
+    staging: main
+    prod: current-prod
   env_file: config/current-env
   systemd_service: 
     prod: popplio-prod
@@ -30,6 +33,9 @@ arcadia:
   envs:
     - staging
     - prod
+  env_branches:
+    staging: main
+    prod: current-prod
   env_file: current-env
   systemd_service: 
     prod: arcadia-prod
@@ -48,6 +54,9 @@ persepolis:
   bin: persepolis
   envs:
     - staging
+  env_branches:
+    staging: main
+    prod: current-prod
   systemd_service: 
     prod: ""
     staging: persepolis
@@ -65,6 +74,9 @@ ibl-tickets:
   bin: ibl-tickets
   envs:
     - staging
+  env_branches:
+    staging: main
+    prod: current-prod
   systemd_service: 
     prod: ""
     staging: ibl-tickets-v4
@@ -81,6 +93,9 @@ nightheart:
   bin: ""
   envs:
     - staging
+  env_branches:
+    staging: main
+    prod: current-prod
   systemd_service: 
     prod: ""
     staging: ibl-widgets
@@ -89,7 +104,8 @@ nightheart:
       - npm i
       - npm run build
     staging:
-      - make all
+      - npm i
+      - npm run build
 
 htmlsanitize:
   repo: https://github.com/infinitybotlist/htmlsanitize
@@ -98,6 +114,9 @@ htmlsanitize:
   bin: htmlsanitize
   envs:
     - staging
+  env_branches:
+    staging: main
+    prod: current-prod
   systemd_service: 
     prod: ""
     staging: htmlsanitize
@@ -114,6 +133,9 @@ infernoplex:
   bin: infernoplex
   envs:
     - staging
+  env_branches:
+    staging: main
+    prod: current-prod
   systemd_service: 
     prod: ""
     staging: infernoplex
@@ -130,6 +152,9 @@ borealis:
   bin: borealis
   envs:
     - staging
+  env_branches:
+    staging: main
+    prod: current-prod
   systemd_service: 
     prod: ""
     staging: borealis

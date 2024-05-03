@@ -27,6 +27,8 @@ class Component(pydantic.BaseModel):
     envs: list[str] | None = ["staging"]
     """The environments in which the component can be deployed in"""
 
+    env_branches: dict[str, str]
+
     env_file: str | None = None
     """The environment file for the component. Only useful for components with staging/prod envs"""
 
@@ -52,3 +54,9 @@ class Components(pydantic.BaseModel):
             return Components.model_validate({
                 "components": yaml.load(f)
             })
+    
+    def find(self, name: str):
+        """Find a component by name"""
+        for k, v in self.components.items():
+            if k == name or v.dir == name:
+                return v

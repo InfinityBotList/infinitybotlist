@@ -19,7 +19,6 @@ class DummyFile(object):
         self.rds = rds
 
     def write(self, x):
-        # Avoid print() second call (useless \n)
         if len(x.rstrip()) > 0:
             self.rds.pbar.write(x, file=self.file)
     
@@ -108,6 +107,7 @@ class Stepper():
 
         with self._redirect():
             for step in self.steps:
+                print(step)
                 self.pbar.update(round(100 / (len(self.steps) + 1)))
                 self.pbar.set_description(step.name)
                 step.func()
@@ -119,6 +119,10 @@ class Stepper():
     def step(self, name: str):
         """Decorator for adding steps"""
         def decorator(func):
-            self.steps.append(Step(name=name, func=func))
+            self.add_step(name, func)
             return func
         return decorator
+    
+    def add_step(self, name: str, func: typing.Callable):
+        """Add a step to the stepper"""
+        self.steps.append(Step(name=name, func=func))
