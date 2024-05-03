@@ -69,10 +69,10 @@ def run(s: Stepper, c: Components, args: dict[str, str]):
     subprocess.call(["rm", "-rf", f"{proj_root}/prod2"])
 
     # Hacky solution, remove temp submodule from .gitmodules manually
-    with open(f"{proj_root}/.gitmodules", "r") as f:
+    with open(f"{s.get_repo_root()}/.gitmodules", "r") as f:
         lines = f.readlines()
 
-    with open(f"{proj_root}/.gitmodules", "w") as f:
+    with open(f"{s.get_repo_root()}/.gitmodules", "w") as f:
         for line in lines:
             if tempid not in line:
                 f.write(line)
