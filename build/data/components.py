@@ -36,6 +36,11 @@ class Component(pydantic.BaseModel):
     build: Differs[list[str]]
     """The build commands for the component"""
 
+    @property
+    def supports_prod(self) -> bool:
+        """Check if the component supports production+staging environments"""
+        return "prod" in self.envs
+
 class Components(pydantic.BaseModel):
     components: dict[str, Component]
 
