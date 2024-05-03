@@ -41,7 +41,7 @@ def run(s: Stepper, c: Components, args: dict[str, str]):
     print(f"Removing folder '{proj_root}/prod2' and making temp submodule")
     subprocess.call(["git", "rm", "-rf", f"{proj_root}/prod2"])
     subprocess.call(["rm", "-rf", f"{proj_root}/prod2"])
-    subprocess.call(["git", "submodule", "add", "-b", found_comp.env_branches["staging"], "--name", "popplio-prodding", found_comp.repo, f"{proj_root}/prod2"])
+    subprocess.call(["git", "submodule", "add", "-b", found_comp.env_branches["staging"], "--name", secrets.token_hex(8), found_comp.repo, f"{proj_root}/prod2"])
 
 
     if found_comp.env_file:
@@ -61,6 +61,7 @@ def run(s: Stepper, c: Components, args: dict[str, str]):
         subprocess.call(cmd.split(" "), cwd=f"{proj_root}/prod2")
 
     print(f"Removing 'prod' and 'prod2'")
+    subprocess.call(["git", "rm", "--cached", "-f", f"{proj_root}/prod2"])
     subprocess.call(["git", "rm", "-rf", f"{proj_root}/prod2"])
     subprocess.call(["rm", "-rf", f"{proj_root}/prod"])
     subprocess.call(["rm", "-rf", f"{proj_root}/prod2"])
