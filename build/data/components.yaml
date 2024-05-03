@@ -1,0 +1,140 @@
+popplio:
+  repo: https://github.com/infinitybotlist/Popplio
+  description: API
+  dir: Popplio
+  bin: popplio
+  envs:
+    - staging
+    - prod
+  env_file: config/current-env
+  systemd_service: 
+    prod: popplio-prod
+    staging: popplio-staging
+  build:
+    prod:
+      - make all
+    staging:
+      - make all
+      - make ts
+  test:
+    prod:
+      - make tests
+    staging:
+      - make tests
+
+arcadia:
+  repo: https://github.com/infinitybotlist/arcadia
+  description: Management service + misc background task handling
+  dir: arcadia
+  bin: bot
+  envs:
+    - staging
+    - prod
+  env_file: current-env
+  systemd_service: 
+    prod: arcadia-prod
+    staging: arcadia-staging
+  build:
+    prod:
+      - make all
+    staging:
+      - make all
+      - make ts
+
+persepolis:
+  repo: https://github.com/infinitybotlist/persepolis
+  description: Staff Onboarding System
+  dir: persepolis
+  bin: persepolis
+  envs:
+    - staging
+  systemd_service: 
+    prod: ""
+    staging: persepolis
+  build:
+    prod:
+      - make all
+    staging:
+      - make all
+      - make ts
+
+ibl-tickets:
+  repo: https://github.com/infinitybotlist/ibl-tickets
+  description: Ticketting bot
+  dir: ibl-tickets
+  bin: ibl-tickets
+  envs:
+    - staging
+  systemd_service: 
+    prod: ""
+    staging: ibl-tickets-v4
+  build:
+    prod:
+      - make all
+    staging:
+      - make all
+
+nightheart:
+  repo: https://github.com/infinitybotlist/Nightheart
+  description: Widgets
+  dir: Nightheart
+  bin: ""
+  envs:
+    - staging
+  systemd_service: 
+    prod: ""
+    staging: ibl-widgets
+  build:
+    prod:
+      - npm i
+      - npm run build
+    staging:
+      - make all
+
+htmlsanitize:
+  repo: https://github.com/infinitybotlist/htmlsanitize
+  description: HTML Sanitization service
+  dir: htmlsanitize
+  bin: htmlsanitize
+  envs:
+    - staging
+  systemd_service: 
+    prod: ""
+    staging: htmlsanitize
+  build:
+    prod:
+      - make all
+    staging:
+      - make all
+
+infernoplex:
+  repo: https://github.com/infinitybotlist/infernoplex
+  description: Server Listing (WIP)
+  dir: infernoplex
+  bin: infernoplex
+  envs:
+    - staging
+  systemd_service: 
+    prod: ""
+    staging: infernoplex
+  build:
+    prod:
+      - make all
+    staging:
+      - make all
+
+borealis:
+  repo: https://github.com/infinitybotlist/borealis
+  description: Cache Server Management
+  dir: borealis
+  bin: borealis
+  envs:
+    - staging
+  systemd_service: 
+    prod: ""
+    staging: borealis
+  build:
+    prod:
+      - pip install -r requirements.txt
+    staging:
+      - pip install -r requirements.txt
