@@ -7,7 +7,7 @@ popplio:
       git_branch: main
       systemd_service: popplio-staging
       build_steps: 
-        - make all
+        - make
         - make ts
       tests: 
         - make tests
@@ -15,7 +15,7 @@ popplio:
       git_branch: current-prod
       systemd_service: popplio-prod
       build_steps: 
-        - make all
+        - make
       tests:
         - make tests
   env_file: config/current-env
@@ -29,13 +29,13 @@ arcadia:
       git_branch: main
       systemd_service: arcadia-staging
       build_steps: 
-        - make all
+        - make
         - make ts
     prod:
       git_branch: current-prod
       systemd_service: arcadia-prod
       build_steps: 
-        - make all
+        - make
   env_file: current-env
 
 persepolis:
@@ -48,7 +48,7 @@ persepolis:
       git_branch: main
       systemd_service: persepolis
       build_steps: 
-        - make all
+        - make
         - make ts
 
 ibl-tickets:
@@ -61,7 +61,7 @@ ibl-tickets:
       git_branch: main
       systemd_service: ibl-tickets-v4
       build_steps: 
-        - make all
+        - make
 
 nightheart:
   repo: https://github.com/infinitybotlist/Nightheart
@@ -97,13 +97,13 @@ infernoplex:
       git_branch: main
       systemd_service: infernoplex-staging
       build_steps: 
-        - make all
+        - make
         - make ts
     prod: 
       git_branch: main
       systemd_service: infernoplex-prod
       build_steps: 
-        - make all
+        - make
         - make ts
 
 borealis:
@@ -128,4 +128,4 @@ ts-webhook-adapter:
       git_branch: main
       systemd_service: ts-webhook-adapter
       build_steps: 
-        - make all
+        - make

@@ -6,6 +6,9 @@ import sys
 from importlib import import_module 
 from types import ModuleType
 
+# Set some key environment variables such as the sqlx database url etc.
+os.environ["DATABASE_URL"] = os.getenv("DATABASE_URL", "postgres:///infinity")
+
 components = Components.load()
 stepper = Stepper()
 

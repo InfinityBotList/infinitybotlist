@@ -2,7 +2,6 @@
 
 from libstep import Stepper
 from data.components import Components
-import os
 import subprocess
 import secrets
 from .populate import run as populate_run
@@ -23,13 +22,13 @@ def run(s: Stepper, c: Components, args: dict[str, str]):
 
     if not project:
         print("ERROR: component required.")
-        os.exit(1)
+        exit(1)
 
     found_comp = c.find(project)
 
     if not found_comp:
         print(f"ERROR: Component {project} not found.")
-        os.exit(1)
+        exit(1)
 
     proj_root = f"src/{found_comp.dir}"
 
