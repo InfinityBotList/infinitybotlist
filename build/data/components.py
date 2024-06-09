@@ -1,15 +1,18 @@
 import pydantic
 from ruamel.yaml import YAML
-from typing import TypeVar, Generic, Any
 
-T = TypeVar("T", bound=Any)
+class ComponentEnvironment(pydantic.BaseModel):
+    git_branch: str
+    """Name of the corresponding git branch to the environment"""
 
-class Differs(pydantic.BaseModel, Generic[T]):
-    """A class that represents a difference between two values"""
-    staging: T 
-    """The old value"""
-    prod: T
-    """The new value"""
+    systemd_service: str
+    """The systemd service file corresponding to the service running on said environment"""
+
+    build_steps: list[str]
+    """The build steps to be executed on the environment"""
+
+    tests: list[str] | None = None
+    """The tests to be executed on the environment"""
 
 class Component(pydantic.BaseModel):
     repo: str
@@ -21,27 +24,11 @@ class Component(pydantic.BaseModel):
     dir: str
     """The directory of the component"""
 
-    bin: str | None = None
-    """The binary name of the component"""
-
-    envs: list[str] | None = ["staging"]
-    """The environments in which the component can be deployed in"""
-
-    env_branches: dict[str, str]
+    environments: dict[str, ComponentEnvironment]
+    """The environments in which the component can be deployed in mapped to their git branch"""
 
     env_file: str | None = None
     """The environment file for the component. Only useful for components with staging/prod envs"""
-
-    systemd_service: Differs[str] | None = None
-    """The systemd service file for the component"""
-
-    build: Differs[list[str]]
-    """The build commands for the component"""
-
-    @property
-    def supports_prod(self) -> bool:
-        """Check if the component supports production+staging environments"""
-        return "prod" in self.envs
 
 class Components(pydantic.BaseModel):
     components: dict[str, Component]

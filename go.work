@@ -1,7 +1,7 @@
-go 1.22.1
+go 1.22.3
 
 use (
 	./src/Popplio/staging
-	./src/ibl-tickets/staging
-	./src/ts-webhook-adapter/staging
+	./src/ibl-tickets/prod
+	./src/ts-webhook-adapter/prod
 )

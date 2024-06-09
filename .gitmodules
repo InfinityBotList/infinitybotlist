@@ -42,3 +42,31 @@
 	path = src/ts-webhook-adapter/staging
 	url = https://github.com/InfinityBotList/ts-webhook-adapter
 	branch = main
+[submodule "src/persepolis/prod"]
+	path = src/persepolis/prod
+	url = https://github.com/infinitybotlist/persepolis
+	branch = main
+[submodule "src/ibl-tickets/prod"]
+	path = src/ibl-tickets/prod
+	url = https://github.com/infinitybotlist/ibl-tickets
+	branch = main
+[submodule "src/Nightheart/prod"]
+	path = src/Nightheart/prod
+	url = https://github.com/infinitybotlist/Nightheart
+	branch = main
+[submodule "src/htmlsanitize/prod"]
+	path = src/htmlsanitize/prod
+	url = https://github.com/infinitybotlist/htmlsanitize
+	branch = main
+[submodule "src/infernoplex/prod"]
+	path = src/infernoplex/prod
+	url = https://github.com/infinitybotlist/infernoplex
+	branch = main
+[submodule "src/borealis/prod"]
+	path = src/borealis/prod
+	url = https://github.com/infinitybotlist/borealis
+	branch = main
+[submodule "src/ts-webhook-adapter/prod"]
+	path = src/ts-webhook-adapter/prod
+	url = https://github.com/InfinityBotList/ts-webhook-adapter
+	branch = main

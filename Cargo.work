@@ -1,2 +1,2 @@
 [workspace]
-members=["staging/bot", "staging/infernoplex", "staging/htmlsanitize", "staging/persepolis"]
+members=["persepolis/prod", "infernoplex/staging", "infernoplex/prod", "arcadia/staging", "arcadia/prod", "htmlsanitize/prod"]

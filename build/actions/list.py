@@ -9,9 +9,10 @@ def run(s: Stepper, c: Components, args: dict[str, str]):
         print(f"Name: {name}")
         print(f"Description: {component.description}")
         print(f"Directory: {component.dir}")
-        print(f"Binary: {component.bin}")
-        print(f"Environments: {component.envs}")
-        print(f"Environment File: {component.env_file}")
-        print(f"Systemd Service: {component.systemd_service}")
-        print(f"Build: {component.build}")
-        print(f"Supports Prod: {component.supports_prod}")
+
+        for name, env in component.environments.items():
+            print(f"\n[{name}]")
+            print(f"Git Branch: {env.git_branch}")
+            print(f"Systemd Service: {env.systemd_service}")
+            print(f"Build Steps: {env.build_steps}")
+            print(f"Tests: {env.tests}" if env.tests else "No tests available for this service+environment pair")
